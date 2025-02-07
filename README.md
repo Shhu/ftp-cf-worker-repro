@@ -18,7 +18,8 @@ export default eventHandler(() => {
 
 In `package.json`
 ```js
-"workerd-ftp": "^0.1.3"
+"workerd-ftp": "^0.1.3",
+"@arrowood.dev/socket": "^0.2.0",
 ```
 
 In `nuxt.config.ts`

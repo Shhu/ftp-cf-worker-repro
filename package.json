@@ -12,6 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@arrowood.dev/socket": "^0.2.0",
     "@nuxt/eslint": "^0.7.5",
     "@nuxthub/core": "^0.8.11",
     "nuxt": "^3.15.1",
