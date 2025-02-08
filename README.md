@@ -1,41 +1,41 @@
 # Minimal repro for nuxthub cloudflare FTP usage
 
+Branch with a test for basic-ftp on CF worker
+Error 500 on nuxthub in Server logs
+```
+[nuxt] [request error] [unhandled] [500],e.on is not a function
+```
+
+## Repro
+using https://hub.nuxt.com/docs/recipes/debug
+```
+npx nuxt build
+npx nuxthub preview
+```
+http://localhost:8788/test => 500
+
+
+## Changes
+
 In `server/api/test.ts`
 ```js
-import { FTPClient } from 'workerd-ftp'
+import { Client } from 'basic-ftp'
 
 export default eventHandler(() => {
-  new FTPClient('$SERVER$', {
-    port: 21,
-    user: '$USER$',
-    pass: '$PASS$',
-    secure: false,
-  })
+  const client = new Client()
 
   return 'ok'
 })
 ```
 
 In `package.json`
-```js
-"workerd-ftp": "^0.1.3",
-"@arrowood.dev/socket": "^0.2.0",
+```json
+"basic-ftp": "^5.0.5"
 ```
 
 In `nuxt.config.ts`
 ```js
-  $development: {
-    nitro: {
-      alias: {
-        'cloudflare:sockets': '@arrowood.dev/socket',
-      },
-    },
-    vite: {
-      resolve: {
-        alias: {
-          'cloudflare:sockets': '@arrowood.dev/socket',
-        },
-      },
-    },
-  },
+nitro: {
+  minify: false,
+},
 ```
