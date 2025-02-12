@@ -1,12 +1,7 @@
-import { FTPClient } from 'workerd-ftp'
+import { Client } from 'basic-ftp'
 
 export default eventHandler(() => {
-  new FTPClient('$SERVER$', {
-    port: 21,
-    user: '$USER$',
-    pass: '$PASS$',
-    secure: false,
-  })
+  new Client()
 
   return 'ok'
 })

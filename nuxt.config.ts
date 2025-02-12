@@ -6,21 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
   ],
 
-  $development: {
-    nitro: {
-      alias: {
-        'cloudflare:sockets': '@arrowood.dev/socket',
-      },
-    },
-    vite: {
-      resolve: {
-        alias: {
-          'cloudflare:sockets': '@arrowood.dev/socket',
-        },
-      },
-    },
-  },
-
   // https://devtools.nuxt.com
   devtools: { enabled: true },
 
@@ -34,6 +19,10 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-07-30',
+
+  nitro: {
+    minify: false,
+  },
 
   // https://hub.nuxt.com/docs/getting-started/installation#options
   hub: {},
